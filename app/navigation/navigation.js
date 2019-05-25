@@ -5,6 +5,11 @@ import { createStackNavigator, createAppContainer, createBottomTabNavigator } fr
 import intro1 from '../screens/intro_1';
 import intro2 from '../screens/intro_2';
 import intro3 from '../screens/intro_3';
+import GetStartedScreen from '../screens/GetStartedScreen';
+import RegistrationStepOneScreen from '../screens/RegistrationStepOneScreen'
+import RegistrationStepTwoScreen from '../screens/RegistrationStepTwoScreen'
+import RegistrationStepThreeScreen from '../screens/RegistrationStepThreeScreen'
+import LoginScreen from '../screens/LoginScreen'
 
 // import Posts from '../components/Posts';
 // import PostDetails from '../components/PostDetails';
@@ -21,9 +26,14 @@ import intro3 from '../screens/intro_3';
 // });
 
 const AppNavigator = createStackNavigator({
+  GetStartedScreen,
         intro1 ,
         intro2,
         intro3,
+        RegistrationStepOneScreen,
+        RegistrationStepThreeScreen,
+        RegistrationStepTwoScreen,
+        LoginScreen,
 });
 
 export default createAppContainer(AppNavigator);
