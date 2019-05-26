@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TouchableOpacity, Dimensions ,StyleSheet, View, Image } from 'react-native';
+import { Text, TouchableOpacity, ScrollView, Dimensions ,StyleSheet, View, Image } from 'react-native';
 import Modal from 'react-native-modal';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -12,11 +12,13 @@ export default class Example extends Component {
     this.setModal = props.setModal;
   }
 
-  componentWillReceiveProps(nextProp){
-    this.setState({
-      visibleModal: nextProp.visibleModal,
-    })
-  }
+  static getDerivedStateFromProps(nextProps, prevState){
+    if(nextProps.visibleModal !== prevState.visibleModal){
+      return { visibleModal: nextProps.visibleModal};
+   }
+   else return null;
+ }
+
   _renderButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
@@ -107,6 +109,7 @@ const styles = EStyleSheet.create({
         marginVertical: '25rem',
         justifyContent:'center',
         alignItems:'center',
+        flex:1,
       },
       image:{
         width:'60%',
@@ -117,7 +120,8 @@ const styles = EStyleSheet.create({
         alignItems: 'center',
         width:'100%',
         marginBottom:'2rem',
-        marginTop:'2%'
+        marginTop:'2%',
+        flex:1,
       },
       title: {
         fontSize: '18rem',
@@ -131,17 +135,6 @@ const styles = EStyleSheet.create({
         color: '#7E828C',
         marginBottom: '30rem',
         width: '70%',
-      },
-      phone_container:{
-        width:'80%',
-        height:'120rem',
-        backgroundColor:'white',
-        flexDirection: 'column',
-        alignItems:'center',
-        shadowOffset: { width: 10, height: 10 },
-        shadowColor: 'black',
-        shadowOpacity: 1,
-        elevation: 3,
       },
       continue_button:{
         borderColor:'#FFFFFF',
@@ -171,11 +164,6 @@ const styles = EStyleSheet.create({
         textAlign:'center',
         fontSize:'14rem',
       },
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//   },
   button: {
     backgroundColor: 'lightblue',
     padding: 12,
@@ -186,13 +174,15 @@ const styles = EStyleSheet.create({
     borderColor: 'rgba(0, 0, 0, 0.1)',
   },
   modalContent: {
+    display:'flex',
     backgroundColor: 'white',
     padding: 22,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 4,
+    flexWrap: 'wrap',
     borderColor: 'rgba(0, 0, 0, 0.1)',
-    height:'90%',
+    height:Dimensions.get("window").height * 0.9,
     marginBottom:'10%'
   },
   bottomModal: {

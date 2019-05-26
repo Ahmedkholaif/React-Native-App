@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, Dimensions, StatusBar, Text, View, Image,} from "react-native";
+import { Platform, StyleSheet, TouchableOpacity, Dimensions, StatusBar, Text, View, Image,} from "react-native";
 
 import SplashScreen from 'react-native-splash-screen';
 import AppNavigation from './app/navigation/navigation';
@@ -45,6 +45,15 @@ export default class App extends Component{
   on_Skip_slides = () => {
     this.setState({ show_Main_App: true });
   };
+
+  _renderButton = (text, onPress) => (
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.bottomButton}>
+        <Text>{text}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+
   componentDidMount() {
     SplashScreen.hide();
   }
@@ -63,6 +72,7 @@ export default class App extends Component{
             onSkip={this.on_Skip_slides}
             bottomButton
             nextLabel="Let's Start"
+            doneLabel="Let's Start"
             activeDotStyle={[styles.activeDotStyle,(isPortrait)?styles.portraitDotStyle:null]}
             dotStyle={[styles.dotStyle,(isPortrait)?styles.portraitDotStyle:null]}
             buttonStyle={[styles.bottomButton,(isPortrait)?styles.portraitBottomButton:null]}

@@ -11,11 +11,13 @@ export default class Example extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProp){
-    this.setState({
-      visibleModal: nextProp.visibleModal,
-    })
-  }
+  static getDerivedStateFromProps(nextProps, prevState){
+    if(nextProps.visibleModal !== prevState.visibleModal){
+      return { visibleModal: nextProps.visibleModal};
+   }
+   else return null;
+ }
+
   _renderButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
