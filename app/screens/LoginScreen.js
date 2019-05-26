@@ -23,6 +23,10 @@ import TitleAndDescription from '../components/TitleAndDescription'
 import TextButton from '../components/TextButton';
 import SocialMediaLogin from '../components/SocialMediaLogin';
 
+import FaceId from '../components/face_id';
+import TouchId from '../components/touch_id';
+import FingerprintId from '../components/fingerprint_id';
+ 
 //Images
 import Login_IMG from '../../assets/images/login.png';
 
@@ -31,13 +35,6 @@ export default class LoginScreen extends Component {
     super();
   }
 
-  componentDidMount() {
-  }
-
-  static navigationOptions = ({navigation})=>({
-    header:<RegistrationHeader navigation={navigation} stepStart="1" stepEnd="1"/>,
-  });
-
   state={
     showPassword:false,
     validEmail:false,
@@ -45,8 +42,22 @@ export default class LoginScreen extends Component {
     submitted:false,
     username:'',
     email:'',
-    password:''
+    password:'',
+    activeModal:'face',
   }
+  componentDidMount() {
+  }
+
+  setModal = (currentModal)=>{
+    this.setState({
+      activeModal: currentModal,
+    });
+  }
+
+  static navigationOptions = ({navigation})=>({
+    header:<RegistrationHeader navigation={navigation} stepStart="1" stepEnd="1"/>,
+  });
+
 
   togglePassword=()=>{
     this.setState({
@@ -94,6 +105,21 @@ export default class LoginScreen extends Component {
     const { validEmail ,validUsername,submitted} = this.state
     return (
       <ScrollView>
+        <FaceId 
+          visibleModal={this.state.activeModal === 'face'}
+          setModal ={this.setModal}
+        />
+
+        <TouchId 
+          visibleModal={this.state.activeModal === 'touch'}
+          setModal ={this.setModal}
+        />
+
+        <FingerprintId 
+          visibleModal={this.state.activeModal === 'fingerprint'}
+          setModal ={this.setModal}
+        />
+
         <KeyboardAvoidingView 
           style={styles.container}
           behavior="padding"

@@ -4,10 +4,19 @@ import Modal from 'react-native-modal';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default class Example extends Component {
-  state = {
-    visibleModal: null,
-  };
+  constructor (props){
+    super(props);
+    this.state = {
+      visibleModal: props.visibleModal,
+    };
+    this.setModal = props.setModal;
+  }
 
+  componentWillReceiveProps(nextProp){
+    this.setState({
+      visibleModal: nextProp.visibleModal,
+    })
+  }
   _renderButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
@@ -16,7 +25,7 @@ export default class Example extends Component {
     </TouchableOpacity>
   );
 
-  _renderModalContent = () => (
+  _renderModalContent = (setModal) => (
 
     <View style={styles.modalContent}>
         <View style={styles.img_container}>
@@ -32,7 +41,7 @@ export default class Example extends Component {
             <Text style={styles.continue_button_Text}>Yes, Sure</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => this.setState({ visibleModal: null })}
+          onPress={()=>setModal('touch')}
           style={[styles.button,styles.skip_button]} >
         <Text style={styles.skip_button_Text}>
             No thanks,
@@ -47,10 +56,8 @@ export default class Example extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this._renderButton('face A slower modal', () => this.setState({ visibleModal: 3 }))}
-        {this._renderButton('face Fancy modal!', () => this.setState({ visibleModal: 4 }))}
         <Modal
-          isVisible={this.state.visibleModal === 3}
+          isVisible={this.state.visibleModal}
           animationInTiming={2000}
           animationOutTiming={2000}
           backdropTransitionInTiming={2000}
@@ -58,10 +65,10 @@ export default class Example extends Component {
           backdropOpacity={.2}
           coverScreen={true}
         >
-          {this._renderModalContent()}
+          {this._renderModalContent(this.props.setModal)}
         </Modal>
         <Modal
-          isVisible={this.state.visibleModal === 4}
+          isVisible={this.props.visibleModalv === 2}
           backdropColor={'white'}
           backdropOpacity={0.8}
           animationIn={'bounceInUp'}

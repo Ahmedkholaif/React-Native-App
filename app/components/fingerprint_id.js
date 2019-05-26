@@ -4,10 +4,18 @@ import Modal from 'react-native-modal';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default class Example extends Component {
-  state = {
-    visibleModal: null,
-  };
+  constructor (props){
+    super(props);
+    this.state = {
+      visibleModal: props.visibleModal,
+    };
+  }
 
+  componentWillReceiveProps(nextProp){
+    this.setState({
+      visibleModal: nextProp.visibleModal,
+    })
+  }
   _renderButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
@@ -25,14 +33,14 @@ export default class Example extends Component {
         <View style={styles.textContainer}>
         <Text style={styles.title}>Fingerprint</Text>
         <Text style={styles.description}>
-        Would you want to allow NASNAV to use Fingerprint for your next login?
+          Would you want to allow NASNAV to use Fingerprint for your next login?
         </Text>
         </View>
         <TouchableOpacity style={[styles.button,styles.continue_button]} >
             <Text style={styles.continue_button_Text}>Yes, Sure</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => this.setState({ visibleModal: null })}
+          onPress={() => this.props.setModal(null)}
           style={[styles.button,styles.skip_button]} >
         <Text style={styles.skip_button_Text}>
             No thanks,
@@ -47,10 +55,8 @@ export default class Example extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this._renderButton('finger A slower modal', () => this.setState({ visibleModal: 3 }))}
-        {this._renderButton('finger Fancy modal!', () => this.setState({ visibleModal: 4 }))}
         <Modal
-          isVisible={this.state.visibleModal === 3}
+          isVisible={this.state.visibleModal}
           animationInTiming={2000}
           animationOutTiming={2000}
           backdropTransitionInTiming={2000}

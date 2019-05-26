@@ -19,6 +19,10 @@ import validator from 'validator';
 import MainButton from '../components/MainButton';
 import TitleAndDescription from '../components/TitleAndDescription'
 
+import FaceId from '../components/face_id';
+import TouchId from '../components/touch_id';
+import FingerprintId from '../components/fingerprint_id';
+
 export default class RegistrationStepOneScreen extends Component {
   constructor() {
     super();
@@ -39,8 +43,16 @@ export default class RegistrationStepOneScreen extends Component {
     },
     phoneNumber:'',
     validPhone:false,
-    submitted:false
+    submitted:false,
+    activeModal:'face',
   }
+
+  setModal = (currentModal)=>{
+    this.setState({
+      activeModal: currentModal,
+    });
+  }
+
   onChangePhoneNumber=(phoneNumber)=>{
     const {maxLength,dialCode,locale}= this.state.selectedCountry;
     const trimmedNumber=phoneNumber.replace(/ /g,'');
@@ -75,6 +87,23 @@ export default class RegistrationStepOneScreen extends Component {
   render() {
     const {validPhone,submitted} = this.state;
     return (
+
+      <>
+      <FaceId 
+      visibleModal={this.state.activeModal === 'face'}
+      setModal ={this.setModal}
+    />
+
+    <TouchId 
+      visibleModal={this.state.activeModal === 'touch'}
+      setModal ={this.setModal}
+    />
+
+    <FingerprintId 
+      visibleModal={this.state.activeModal === 'fingerprint'}
+      setModal ={this.setModal}
+    />
+
       <ScrollView>
         <KeyboardAvoidingView 
           style={styles.container}
@@ -104,6 +133,7 @@ export default class RegistrationStepOneScreen extends Component {
           </View>
         </KeyboardAvoidingView>
       </ScrollView>
+      </>
     );
   }
 }

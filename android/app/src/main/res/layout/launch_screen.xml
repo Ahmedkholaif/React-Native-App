@@ -8,9 +8,9 @@
     android:background="@color/blue"
     android:orientation="vertical">
 
-    <!--<ImageView-->
-        <!--android:layout_width="500dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_gravity="fill_horizontal"-->
-        <!--tools:src="@mipmap/splash" />-->
+    <ImageView
+        android:layout_width="460dp"
+        android:layout_height="900dp"
+        android:layout_gravity="center"
+        tools:src="@mipmap/splash" />
 </LinearLayout>
