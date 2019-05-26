@@ -169,6 +169,8 @@ const styles = EStyleSheet.create({
     shadowColor: 'black',
     shadowOpacity: 1,
     elevation: 3,
+    margin:'15rem',
+    // padding:'15rem',
   },
   main_button:{
     marginBottom:'15rem',

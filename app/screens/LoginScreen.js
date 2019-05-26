@@ -37,7 +37,6 @@ export default class LoginScreen extends Component {
 
   state={
     showPassword:false,
-    validEmail:false,
     validUsername:false,
     submitted:false,
     username:'',
@@ -78,18 +77,6 @@ export default class LoginScreen extends Component {
     console.log("Valid username",validUsername)
 
   }
-
-  onChangeEmail=(email)=>{
-    let validEmail=true;
-    if(!validator.isEmail(email)){
-      validEmail=false;
-    }
-    this.setState({
-      email,
-      validEmail
-    })
-    console.log("Valid Email",validEmail)
-  }
   _submit=()=>{
     const { validEmail ,validUsername} = this.state
     if(!validEmail&&!validUsername){
@@ -102,7 +89,7 @@ export default class LoginScreen extends Component {
     }
   }
   render() {
-    const { validEmail ,validUsername,submitted} = this.state
+    const { validUsername,submitted} = this.state
     return (
       <ScrollView>
         <FaceId 
@@ -136,8 +123,7 @@ export default class LoginScreen extends Component {
             desc="It’s always great to see you back, We missed you!"
           />
           <View style={styles.registration_container}>
-            {(!validUsername&&submitted)?<Text style={styles.validation_error}>Please, make sure of your username!</Text>:null}
-            {(!validEmail&&submitted)?<Text style={styles.validation_error}>Please, make sure of your email!</Text>:null}
+            {(!validUsername&&submitted)?<Text style={styles.validation_error}>Please, make sure of your email/phone!</Text>:null}
             <View style={styles.registration_text_input_container}>
               <TextInput
                   style={styles.registartion_text_input}

@@ -28,7 +28,7 @@ const styles = EStyleSheet.create({
         width:'80%',
         borderWidth: 1,
         borderRadius: 50,
-        padding:'10rem',
+        padding:'12rem',
         margin:'5rem',
         borderColor:'#FFFFFF',
         backgroundColor:'#9600FF',
