@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, Dimensions, StatusBar, Text, View, Image} from "react-native";
+import { Platform, StyleSheet, Dimensions, StatusBar, Text, View, Image,} from "react-native";
 
 import SplashScreen from 'react-native-splash-screen';
 import AppNavigation from './app/navigation/navigation';
@@ -29,8 +29,8 @@ export default class App extends Component{
   }
 
   _renderItem = props => (
-    <View style={styles.mainContent} >
-      <Image style={props.imageStyle} source={props.image}/>
+    <View style={[styles.mainContent,(this.state.isPortrait)?styles.portraitMainContent:null]} >
+      <Image style={[props.imageStyle,(!this.state.isPortrait)?styles.landscape_img:null]} source={props.image}/>
       <View>
         <Text style={styles.title}>{props.title}</Text>
         <Text style={styles.text}>{props.text}</Text>
@@ -56,19 +56,19 @@ export default class App extends Component{
       );
     }else {
       return (
-        <AppIntroSlider
-          slides={slides}
-          renderItem={this._renderItem}
-          onDone={this.on_Done_all_slides}
-          onSkip={this.on_Skip_slides}
-          bottomButton
-          nextLabel="Let's Start"
-          activeDotStyle={[styles.activeDotStyle,(isPortrait)?styles.portraitDotStyle:null]}
-          dotStyle={[styles.dotStyle,(isPortrait)?styles.portraitDotStyle:null]}
-          buttonStyle={[styles.bottomButton,(isPortrait)?styles.portraitBottomButton:null]}
-          buttonTextStyle={styles.buttonTextStyle}
-          paginationStyle={styles.paginationStyle}
-        />
+          <AppIntroSlider
+            slides={slides}
+            renderItem={this._renderItem}
+            onDone={this.on_Done_all_slides}
+            onSkip={this.on_Skip_slides}
+            bottomButton
+            nextLabel="Let's Start"
+            activeDotStyle={[styles.activeDotStyle,(isPortrait)?styles.portraitDotStyle:null]}
+            dotStyle={[styles.dotStyle,(isPortrait)?styles.portraitDotStyle:null]}
+            buttonStyle={[styles.bottomButton,(isPortrait)?styles.portraitBottomButton:null]}
+            buttonTextStyle={styles.buttonTextStyle}
+            paginationStyle={styles.paginationStyle}
+          />
       );
     }
   }
@@ -89,10 +89,12 @@ const styles = EStyleSheet.create({
    mainContent: {
     // display: 'flex',
     marginTop:'40rem',
-    height:'70%',
     width:'100%',
     alignItems: 'center',
     justifyContent: 'space-around',
+  },
+  portraitMainContent:{
+    height:'70%',
   },
   image_1: {
     width: '165rem',
@@ -111,8 +113,8 @@ const styles = EStyleSheet.create({
   }
   ,
   landscape_img:{
-    width: '80rem',
-    height:  '60rem',
+    width: '120rem',
+    height:  '90rem',
     opacity:.8,
   },
   title: {
