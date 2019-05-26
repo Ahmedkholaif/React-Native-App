@@ -18,8 +18,14 @@ export default class App extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      show_Main_App: false
+      show_Main_App: false,
+      isPortrait:Dimensions.get('window').height > 500
     };
+    Dimensions.addEventListener('change',(dims)=>{
+       this.setState({
+         isPortrait: Dimensions.get('window').height > 500
+       })
+    })
   }
 
   _renderItem = props => (
@@ -43,6 +49,7 @@ export default class App extends Component{
     SplashScreen.hide();
   }
   render() {
+    const {isPortrait} = this.state;
     if (this.state.show_Main_App){
       return (
         <AppNavigation />
@@ -56,9 +63,9 @@ export default class App extends Component{
           onSkip={this.on_Skip_slides}
           bottomButton
           nextLabel="Let's Start"
-          activeDotStyle={styles.activeDotStyle}
-          dotStyle={styles.dotStyle}
-          buttonStyle={styles.bottomButton}
+          activeDotStyle={[styles.activeDotStyle,(isPortrait)?styles.portraitDotStyle:null]}
+          dotStyle={[styles.dotStyle,(isPortrait)?styles.portraitDotStyle:null]}
+          buttonStyle={[styles.bottomButton,(isPortrait)?styles.portraitBottomButton:null]}
           buttonTextStyle={styles.buttonTextStyle}
           paginationStyle={styles.paginationStyle}
         />
@@ -69,84 +76,97 @@ export default class App extends Component{
 
 const entireScreenWidth = Dimensions.get('window').width;
 EStyleSheet.build({$rem: entireScreenWidth / 380});
+// console.log(Dimensions.get('window').height,isPortrait);
 const styles = EStyleSheet.create({
   container: {
     flex: 1,
-    marginTop:40,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+    backgroundColor: "#F5FCFF",
+    height:Dimensions.get("window").height,
+
   },
    mainContent: {
     // display: 'flex',
+    marginTop:'40rem',
     height:'70%',
     width:'100%',
     alignItems: 'center',
     justifyContent: 'space-around',
   },
   image_1: {
-    // flex: 1,
-    width: 165,
-    height:  181,
-    // marginBottom:'3%',
+    width: '165rem',
+    height:  '181rem',
     opacity:.8,
   },
   image_2: {
-    // flex: 1,
-    width: 200,
-    height:  166,
-    // marginBottom:'3%',
+    width: '200rem',
+    height:  '166rem',
     opacity:.8,
   },
   image_3: {
-    // flex: 1,
-    width: 263,
-    height:  185,
-    // marginBottom:'3%',
+    width: '263rem',
+    height:  '185rem',
     opacity:.8,
   }
   ,
+  landscape_img:{
+    width: '80rem',
+    height:  '60rem',
+    opacity:.8,
+  },
   title: {
     // flex: 1,
-    fontSize: 16,
+    fontSize: '18rem',
     color: '#353B46',
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: '10rem',
     fontWeight: 'bold',
   },
   text: {
     // flex: 1,
     color: '#7E828C',
     textAlign: 'center',
-    fontSize: 15,
+    fontSize:'15rem',
     // lineHeight:1.2,
     // paddingHorizontal: 16,
-    marginBottom:'10%',
+    marginBottom:'45rem',
   },
   paginationStyle:{
     // marginBottom: '20%',
   },
   dotStyle:{
     backgroundColor:'#DED9FC',
-    width:8,
-    height:8,
+    width:'8rem',
+    height:'8rem',
   },
   activeDotStyle:{
-    backgroundColor:'#7966FE',
-    width:11,
-    height:11,
+    backgroundColor:'#9600FF',
+    width:'11rem',
+    height:'11rem',
+  },
+  portraitDotStyle:{
+    marginBottom:'80rem',
   },
   bottomButton:{
-    borderRadius: 25,
-    backgroundColor:'#9600ff',
-    height:50,
-    // marginBottom:'10%',
-    marginTop:'15%',
+    borderWidth: 1,
+    borderRadius: 50,
+    borderColor:'#FFFFFF',
+    backgroundColor:'#9600FF',
+    width:'90%',
+    alignSelf: 'center',
+    padding:'12rem',
+  },
+  portraitBottomButton:{
+    marginBottom:'50rem'
   },
   buttonTextStyle:{
-    marginBottom: '10%',
-    // marginTop:'15%',
     color:'#FFFFFF',
+    textAlign:'center',
+    fontSize:'14rem',
+    fontWeight:'500',
+    padding: 0,
+
   }
 });
 

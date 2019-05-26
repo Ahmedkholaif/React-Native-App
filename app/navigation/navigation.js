@@ -27,12 +27,12 @@ import LoginScreen from '../screens/LoginScreen'
 
 const AppNavigator = createStackNavigator({
   GetStartedScreen,
+  RegistrationStepTwoScreen,
         intro1 ,
         intro2,
         intro3,
         RegistrationStepOneScreen,
         RegistrationStepThreeScreen,
-        RegistrationStepTwoScreen,
         LoginScreen,
 });
 

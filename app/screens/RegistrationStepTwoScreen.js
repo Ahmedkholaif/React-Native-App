@@ -50,31 +50,34 @@ export default class RegistrationStepTwoScreen extends Component {
               />
           <View style={styles.phone_container}>
           <View style={styles.verfication_input_container}>
-            <KeycodeInput
-              ref="codeInputRef1"
-              keyboardType="numeric"
-              className={'border-b'}
-              codeLength={4}
-              space={18}
-              size={42}
-              inputPosition='left'
-              activeColor='#9600FF'
-              inactiveColor='#B5B5B5'
-              codeInputStyle={styles.verfication_input}
-              autoFocus={false}
-              onFulfill={(code) => this._onFulfill(code)}
-              />
-              </View>
-            <MainButton
-                text="Continue"
-                action={()=>this.props.navigation.navigate('RegistrationStepThreeScreen')}
+              <KeycodeInput
+                ref="codeInputRef1"
+                keyboardType="numeric"
+                className={'border-b'}
+                codeLength={4}
+                space={14}
+                size={42}
+                inputPosition='left'
+                activeColor='#9600FF'
+                inactiveColor='#B5B5B5'
+                codeInputStyle={styles.verfication_input}
+                autoFocus={false}
+                onFulfill={(code) => this._onFulfill(code)}
+                containerStyle={{marginTop:0}}
                 />
+              </View>
+              <MainButton
+                  text="Continue"
+                  action={()=>this.props.navigation.navigate('RegistrationStepThreeScreen')}
+                  style={{width:'100%'}}
+                  />
           </View>
           <View style={{flexDirection:'row'}}>
               <Text style={styles.resend_button_Text}>Didn’t get the code? 
               </Text>
               <TextButton
-                text=" Re-send in 0:30"/>
+                text=" Re-send in 0:30"
+                textStyle={styles.resend_button_Text}/>
           </View>
         </KeyboardAvoidingView>
       </ScrollView>
@@ -105,26 +108,28 @@ const styles = EStyleSheet.create({
     backgroundColor:'white',
     flexDirection: 'column',
     alignItems:'center',
-    justifyContent:'center',
+    justifyContent:'flex-start',
     shadowOffset: { width: 10, height: 10 },
     shadowColor: 'black',
     shadowOpacity: 1,
     elevation: 3,
     margin:'15rem',
-    padding:'10rem',
+    padding:'15rem',
   },
   verfication_input_container:{
-    height:'60rem',
-    marginBottom:'15rem'
+    height:'50rem',
+     marginBottom:'20rem'
   },
   verfication_input:{ 
     color:'gray',
     fontWeight: 'bold',
     fontSize:20,
-    marginBottom:'5rem',
+    // marginBottom:'5rem',
+    // paddingBottom:'20rem'
    },
    resend_button_Text:{
-      color:'#9600FF'
+      color:'#9600FF',
+      fontSize:'14rem'
    },
   keyboard_avoid_padding:{
     height:'150rem'

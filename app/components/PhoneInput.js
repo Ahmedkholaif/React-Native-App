@@ -121,12 +121,12 @@ const styles = EStyleSheet.create({
     justifyContent: 'flex-start',
     alignItems:'center',
     width:'80%',
-    height:'40rem',
+    height:'45rem',
     borderColor: '#C9C9C9',
     borderWidth:1,
     borderRadius:2,
     paddingLeft:'10rem',
-    marginTop:'10rem'
+    // marginTop:'10rem'
   },
   flag_button:{
     width:'25rem',
