@@ -93,7 +93,7 @@ export default class componentName extends Component {
             position: 'absolute' }}>
             <Text>Please pick a value</Text>
             { pickerValues.map((value, index) => {
-              return <TouchableHighlight key={index} onPress={() => this.setPickerValue(value)} style={{ paddingTop: 4, paddingBottom: 4 }}>
+              return <TouchableHighlight underlayColor="white" key={index} onPress={() => this.setPickerValue(value)} style={{ paddingTop: 4, paddingBottom: 4 }}>
                   <Text>{ value.name }</Text>
                 </TouchableHighlight>
             })}

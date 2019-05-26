@@ -68,6 +68,7 @@ export default class App extends Component{
             buttonStyle={[styles.bottomButton,(isPortrait)?styles.portraitBottomButton:null]}
             buttonTextStyle={styles.buttonTextStyle}
             paginationStyle={styles.paginationStyle}
+            contentContainerStyle={styles.contentContainer}
           />
       );
     }
@@ -85,6 +86,9 @@ const styles = EStyleSheet.create({
     backgroundColor: "#F5FCFF",
     height:Dimensions.get("window").height,
 
+  },
+  contentContainer:{
+    backgroundColor: '#F6F5FA',
   },
    mainContent: {
     // display: 'flex',
