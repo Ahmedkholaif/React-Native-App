@@ -8,7 +8,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
-
+         setContentView(R.layout.launch_screen);
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();

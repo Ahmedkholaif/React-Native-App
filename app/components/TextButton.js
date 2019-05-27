@@ -8,7 +8,7 @@ import {
  import EStyleSheet from 'react-native-extended-stylesheet';
 
 const TextButton = ({
-    action,text,style,textStyle,...rest
+    action,text,style,textStyle,seconds,subText,...rest
 }) => (
     <TouchableOpacity 
         style={[style]}
@@ -16,7 +16,7 @@ const TextButton = ({
         <Text 
         style={[styles.text,
             textStyle]}
-        >{text}</Text>
+        >{text+subText}</Text>
     </TouchableOpacity>
 );
 

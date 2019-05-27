@@ -19,9 +19,9 @@ import validator from 'validator';
 import MainButton from '../components/MainButton';
 import TitleAndDescription from '../components/TitleAndDescription'
 
-import FaceId from '../components/face_id';
-import TouchId from '../components/touch_id';
-import FingerprintId from '../components/fingerprint_id';
+// import FaceId from '../components/face_id';
+// import TouchId from '../components/touch_id';
+// import FingerprintId from '../components/fingerprint_id';
 
 export default class RegistrationStepOneScreen extends Component {
   constructor() {
@@ -32,6 +32,11 @@ export default class RegistrationStepOneScreen extends Component {
   });
 
   componentDidMount() {
+    const {navigation}= this.props;
+    const { phoneNumber} =this.state;
+    navigation.setParams({
+      phoneNumber
+    })
   }
   state={
     selectedCountry: {
@@ -44,14 +49,14 @@ export default class RegistrationStepOneScreen extends Component {
     phoneNumber:'',
     validPhone:false,
     submitted:false,
-    activeModal:'face',
+    // activeModal:'face',
   }
 
-  setModal = (currentModal)=>{
-    this.setState({
-      activeModal: currentModal,
-    });
-  }
+  // setModal = (currentModal)=>{
+  //   this.setState({
+  //     activeModal: currentModal,
+  //   });
+  // }
 
   onChangePhoneNumber=(phoneNumber)=>{
     const {maxLength,dialCode,locale}= this.state.selectedCountry;
@@ -79,9 +84,10 @@ export default class RegistrationStepOneScreen extends Component {
     this.setState({
       submitted:true
     })
-    const {validPhone} = this.state;
+    const {validPhone,phoneNumber,selectedCountry} = this.state;
+    const phoneNumberWithCode = `+${selectedCountry.dialCode} ${phoneNumber}`;
     if(validPhone)
-      this.props.navigation.navigate('RegistrationStepTwoScreen')
+      this.props.navigation.navigate('RegistrationStepTwoScreen',{phoneNumberWithCode})
     
   }
   render() {
@@ -89,7 +95,7 @@ export default class RegistrationStepOneScreen extends Component {
     return (
 
       <>
-      <FaceId 
+      {/* <FaceId 
       visibleModal={this.state.activeModal === 'face'}
       setModal ={this.setModal}
     />
@@ -102,7 +108,7 @@ export default class RegistrationStepOneScreen extends Component {
     <FingerprintId 
       visibleModal={this.state.activeModal === 'fingerprint'}
       setModal ={this.setModal}
-    />
+    /> */}
 
       <ScrollView>
         <KeyboardAvoidingView 

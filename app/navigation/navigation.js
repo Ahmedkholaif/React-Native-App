@@ -26,12 +26,12 @@ import LoginScreen from '../screens/LoginScreen'
 // });
 
 const AppNavigator = createStackNavigator({
-  GetStartedScreen,
+  RegistrationStepOneScreen,
   RegistrationStepTwoScreen,
+  GetStartedScreen,
         intro1 ,
         intro2,
         intro3,
-        RegistrationStepOneScreen,
         RegistrationStepThreeScreen,
         LoginScreen,
 });
