@@ -10,6 +10,7 @@ import RegistrationStepOneScreen from '../screens/RegistrationStepOneScreen'
 import RegistrationStepTwoScreen from '../screens/RegistrationStepTwoScreen'
 import RegistrationStepThreeScreen from '../screens/RegistrationStepThreeScreen'
 import LoginScreen from '../screens/LoginScreen'
+import MapScreen from '../screens//MapScreen'
 
 // import Posts from '../components/Posts';
 // import PostDetails from '../components/PostDetails';
@@ -26,6 +27,7 @@ import LoginScreen from '../screens/LoginScreen'
 // });
 
 const AppNavigator = createStackNavigator({
+  MapScreen,
   RegistrationStepOneScreen,
   RegistrationStepTwoScreen,
   GetStartedScreen,
