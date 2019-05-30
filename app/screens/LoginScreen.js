@@ -13,7 +13,6 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 import RegistrationHeader from '../components/RegistrationHeader';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Foundation from 'react-native-vector-icons/Foundation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import validator from 'validator';
 
@@ -85,7 +84,7 @@ export default class LoginScreen extends Component {
       })
     }
     else{
-      this.props.navigation.navigate('RegistrationStepTwoScreen');
+      this.props.navigation.navigate('MainNav');
     }
   }
   render() {

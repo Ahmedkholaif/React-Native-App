@@ -18,7 +18,7 @@ export default class App extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      show_Main_App: false,
+      show_Main_App: true,
       isPortrait:Dimensions.get('window').height > 500
     };
     Dimensions.addEventListener('change',(dims)=>{
