@@ -14,6 +14,8 @@ import MapboxGL from "@mapbox/react-native-mapbox-gl";
 import keys from "../config/keys";
 MapboxGL.setAccessToken(keys.mapboxToken);
 
+import requestLocationPermission from "../helper/requestLocation";
+
 //images
 import phoneIcon from "../../assets/images/phone-icon.png";
 import bgIcons from "../../assets/images/bg-map-icons.png";
@@ -38,7 +40,8 @@ export default class ExploreScreen extends Component {
     longitude: null,
     error: null
   };
-  componentDidMount() {
+  async componentDidMount() {
+    await requestLocationPermission();
     this.watchId = navigator.geolocation.watchPosition(
       position => {
         this.setState({
@@ -46,6 +49,7 @@ export default class ExploreScreen extends Component {
           longitude: position.coords.longitude,
           error: null
         });
+        console.log(this.state);
       },
       error => this.setState({ error: error.message }),
       {
@@ -127,6 +131,7 @@ export default class ExploreScreen extends Component {
           centerCoordinate={currentLocation}
           logoEnabled={false}
           attributionEnabled={false}
+          compassEnabled={false}
         >
           {this.renderAnnotations()}
         </MapboxGL.MapView>

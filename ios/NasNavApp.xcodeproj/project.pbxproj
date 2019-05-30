@@ -59,6 +59,8 @@
 		946293845F9B48F48DC60024 /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3482D562BE4C43828B6D04 /* libRNVectorIcons-tvOS.a */; };
 		B76EE68649B44FF288D27373 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D0BC27551A4594B96C3333 /* libRNGestureHandler.a */; };
 		E0250970B2DF49058900E93B /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E80818DD324C7D86B6627C /* libRNGestureHandler-tvOS.a */; };
+		2FAAACAE9DE041F18A963AE9 /* libRCTMGL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FCCEB8FC7A041829B9CE713 /* libRCTMGL.a */; };
+		8E878027EE9640CCB461FE8B /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E915A59D6E3546F9B956C084 /* icomoon.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -389,6 +391,9 @@
 		E48D3F73D2394A55BA07DDE8 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; name = "RNGestureHandler.xcodeproj"; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		39D0BC27551A4594B96C3333 /* libRNGestureHandler.a */ = {isa = PBXFileReference; name = "libRNGestureHandler.a"; path = "libRNGestureHandler.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		97E80818DD324C7D86B6627C /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; name = "libRNGestureHandler-tvOS.a"; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		1123F577BC6D493B8719C834 /* RCTMGL.xcodeproj */ = {isa = PBXFileReference; name = "RCTMGL.xcodeproj"; path = "../node_modules/@mapbox/react-native-mapbox-gl/ios/RCTMGL.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		4FCCEB8FC7A041829B9CE713 /* libRCTMGL.a */ = {isa = PBXFileReference; name = "libRCTMGL.a"; path = "libRCTMGL.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		E915A59D6E3546F9B956C084 /* icomoon.ttf */ = {isa = PBXFileReference; name = "icomoon.ttf"; path = "../resources/fonts/icomoon.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,6 +425,7 @@
 				EFBDC30131F74621A2FAE0C2 /* libSplashScreen.a in Frameworks */,
 				51BF00DD8FAF489AACF2260D /* libRNVectorIcons.a in Frameworks */,
 				B76EE68649B44FF288D27373 /* libRNGestureHandler.a in Frameworks */,
+				2FAAACAE9DE041F18A963AE9 /* libRCTMGL.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +621,7 @@
 				9A5E76A446B24502AF3893E9 /* SplashScreen.xcodeproj */,
 				58B6EE62ABDD465498E1165A /* RNVectorIcons.xcodeproj */,
 				E48D3F73D2394A55BA07DDE8 /* RNGestureHandler.xcodeproj */,
+				1123F577BC6D493B8719C834 /* RCTMGL.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -681,6 +688,7 @@
 				6B5B418BC7E44F9B866AED4D /* Octicons.ttf */,
 				B8FB0B7FA24D4F0BB064FA30 /* SimpleLineIcons.ttf */,
 				85545894880742419BE204B6 /* Zocial.ttf */,
+				E915A59D6E3546F9B956C084 /* icomoon.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1147,6 +1155,7 @@
 				2E328016E4EE4E40A61F992D /* Octicons.ttf in Resources */,
 				19F51E31CDDA404D80B599F4 /* SimpleLineIcons.ttf in Resources */,
 				DD211F6302CB47AD95C19A4E /* Zocial.ttf in Resources */,
+				8E878027EE9640CCB461FE8B /* icomoon.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1286,12 +1295,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@mapbox/react-native-mapbox-gl/ios/RCTMGL/**",
 				);
 			};
 			name = Debug;
@@ -1318,12 +1329,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@mapbox/react-native-mapbox-gl/ios/RCTMGL/**",
 				);
 			};
 			name = Release;
@@ -1349,6 +1362,7 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@mapbox/react-native-mapbox-gl/ios/RCTMGL/**",
 				);
 			};
 			name = Debug;
@@ -1373,6 +1387,7 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@mapbox/react-native-mapbox-gl/ios/RCTMGL/**",
 				);
 			};
 			name = Release;
@@ -1407,12 +1422,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@mapbox/react-native-mapbox-gl/ios/RCTMGL/**",
 				);
 			};
 			name = Debug;
@@ -1447,12 +1464,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@mapbox/react-native-mapbox-gl/ios/RCTMGL/**",
 				);
 			};
 			name = Release;
@@ -1486,12 +1505,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@mapbox/react-native-mapbox-gl/ios/RCTMGL/**",
 				);
 			};
 			name = Debug;
@@ -1525,12 +1546,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/@mapbox/react-native-mapbox-gl/ios/RCTMGL/**",
 				);
 			};
 			name = Release;

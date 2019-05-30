@@ -21,10 +21,11 @@ import MoreScreen from "../screens/MoreScreen";
 import ShopScreen from "../screens/ShopScreen";
 import AccountScreen from "../screens/AccountScreen";
 
+//Icons
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import Feather from "react-native-vector-icons/Feather";
-
+import CustomIcon from "../helper/customIcons";
 // import Posts from '../components/Posts';
 // import PostDetails from '../components/PostDetails';
 
@@ -59,7 +60,8 @@ const MainNav = createBottomTabNavigator(
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => {
           return (
-            <MaterialCommunityIcons name="store" color={tintColor} size={20} />
+            <CustomIcon name="shop" color={tintColor} size={20} />
+            // <MaterialCommunityIcons name="store" color={tintColor} size={20} />
           );
         }
       }
@@ -68,7 +70,7 @@ const MainNav = createBottomTabNavigator(
       screen: AccountScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => {
-          return <FontAwesome5 name="user-alt" color={tintColor} size={20} />;
+          return <CustomIcon name="user" color={tintColor} size={20} />;
         }
       }
     },
@@ -86,7 +88,12 @@ const MainNav = createBottomTabNavigator(
       activeTintColor: "#9600FF",
       inactiveTintColor: "#667783",
       style: {
-        padding: 5
+        paddingHorizontal: 5,
+        paddingVertical: 5
+      },
+      labelStyle: {
+        fontWeight: "bold",
+        fontFamily: "Montserrat"
       }
     }
   }
