@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Platform,
   StyleSheet
   ,Image
   ,View
@@ -16,6 +17,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Foundation from 'react-native-vector-icons/Foundation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import validator from 'validator';
+import FingerprintScanner from 'react-native-fingerprint-scanner';
 
 //Custom Components
 import MainButton from '../components/MainButton';
@@ -45,6 +47,14 @@ export default class LoginScreen extends Component {
     activeModal:'face',
   }
   componentDidMount() {
+    if(Platform.Os === 'android'){
+      FingerprintScanner
+        .isSensorAvailable()
+        .then(biometryType => this.setModal())
+        .catch(error => this.setState({ errorMessage: error.message }));
+    }else{
+
+    }
   }
 
   setModal = (currentModal)=>{

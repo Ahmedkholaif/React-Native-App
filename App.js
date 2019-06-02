@@ -22,10 +22,14 @@ export default class App extends Component{
       isPortrait:Dimensions.get('window').height > 500
     };
     Dimensions.addEventListener('change',(dims)=>{
-       this.setState({
-         isPortrait: Dimensions.get('window').height > 500
-       })
+      this.setState({
+        isPortrait: Dimensions.get('window').height > 500
+      })
     })
+  }
+  
+  componentDidMount(){
+      SplashScreen.hide();
   }
 
   _renderItem = props => (
@@ -54,9 +58,6 @@ export default class App extends Component{
     </TouchableOpacity>
   );
 
-  componentDidMount() {
-    SplashScreen.hide();
-  }
   render() {
     const {isPortrait} = this.state;
     if (this.state.show_Main_App){
