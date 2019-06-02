@@ -1,11 +1,8 @@
 rootProject.name = 'NasNavApp'
-<<<<<<< HEAD
 include ':react-native-fingerprint-scanner'
 project(':react-native-fingerprint-scanner').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fingerprint-scanner/android')
-=======
 include ':@mapbox_react-native-mapbox-gl'
 project(':@mapbox_react-native-mapbox-gl').projectDir = new File(rootProject.projectDir, '../node_modules/@mapbox/react-native-mapbox-gl/android/rctmgl')
->>>>>>> b045128823f338b98d0991755dd2411a25dfc591
 include ':react-native-gesture-handler'
 project(':react-native-gesture-handler').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-gesture-handler/android')
 include ':react-native-vector-icons'

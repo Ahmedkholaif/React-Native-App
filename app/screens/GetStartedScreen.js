@@ -48,6 +48,7 @@ export default class GetStartedScreen extends Component {
             action={()=>this.props.navigation.navigate('RegistrationStepOneScreen')}
           />
           <TextButton
+          action={()=>this.props.navigation.navigate('MainNav')}
           text="Continue as a guest"
           />
         </View>

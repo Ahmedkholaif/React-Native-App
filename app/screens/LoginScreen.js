@@ -43,17 +43,30 @@ export default class LoginScreen extends Component {
     username:'',
     email:'',
     password:'',
-    activeModal:'face',
+    activeModal:'',
   }
   componentDidMount() {
-    if(Platform.Os === 'android'){
+    if(Platform.OS === 'android'){
       FingerprintScanner
         .isSensorAvailable()
-        .then(biometryType => this.setModal())
-        .catch(error => this.setState({ errorMessage: error.message }));
-    }else{
-
+        .then(biometryType => {
+          console.log(biometryType);
+          this.setModal('fingerprint')})
+        .catch(error => {
+          // alert(error)
+        });
     }
+    if(Platform.OS === 'ios'){
+      FingerprintScanner
+        .isSensorAvailable()
+        .then(biometryType => {
+          console.log(biometryType);
+          this.setModal('face')})
+        .catch(error => {
+          // alert(error)
+        });
+    }
+
   }
 
   setModal = (currentModal)=>{
