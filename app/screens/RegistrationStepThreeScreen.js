@@ -86,7 +86,7 @@ export default class RegistrationStepThreeScreen extends Component {
       })
     }
     else{
-      this.props.navigation.navigate('LoginScreen');
+      this.props.navigation.navigate('MainNav');
     }
   }
   render() {

@@ -20,6 +20,10 @@ import TitleAndDescription from '../components/TitleAndDescription'
 import TextButton from '../components/TextButton';
 
 export default class RegistrationStepTwoScreen extends Component {
+  static navigationOptions = ({navigation})=>({
+    header:<RegistrationHeader navigation={navigation} stepStart="2" stepEnd="3"/>,
+  });
+
   constructor() {
     super();
   }
@@ -30,12 +34,35 @@ export default class RegistrationStepTwoScreen extends Component {
   _onFulfill=()=>{
     Keyboard.dismiss()
   }
+  state = {
+    timer: null,
+    counter: 30
+  };
 
-  static navigationOptions = ({navigation})=>({
-    header:<RegistrationHeader navigation={navigation} stepStart="2" stepEnd="3"/>,
-  });
+  componentDidMount() {
+    let timer = setInterval(this.countDown, 1000);
+    this.setState({timer});
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.timer);
+  }
+
+  countDown =() => {
+    if(this.state.counter===0){
+       clearInterval(this.state.timer);
+    }
+    else{
+      this.setState({
+        counter: this.state.counter - 1
+      });
+    }
+  }
 
   render() {
+    const {navigation} =this.props;
+    const number = navigation.getParam('phoneNumberWithCode')?navigation.getParam('phoneNumberWithCode'):"";
+    const desc="Enter the 4 digits number that sent to "+number;
     return (
       <ScrollView>
         <KeyboardAvoidingView 
@@ -46,8 +73,9 @@ export default class RegistrationStepTwoScreen extends Component {
           <View style={styles.img_container}></View>
           <TitleAndDescription
                 title="Verification"
-                desc="Enter the 4 digits number that sent to +20 123 456 789 0"
+                desc={desc}
               />
+            <Text>{this.props.navigation.getParam('phoneNumber')}</Text>
           <View style={styles.phone_container}>
           <View style={styles.verfication_input_container}>
               <KeycodeInput
@@ -76,7 +104,8 @@ export default class RegistrationStepTwoScreen extends Component {
               <Text style={styles.resend_button_Text}>Didn’t get the code? 
               </Text>
               <TextButton
-                text=" Re-send in 0:30"
+                text=" Re-send in 0:"
+                subText={this.state.counter}
                 textStyle={styles.resend_button_Text}/>
           </View>
         </KeyboardAvoidingView>
