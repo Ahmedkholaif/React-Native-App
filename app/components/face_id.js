@@ -69,19 +69,6 @@ export default class Example extends Component {
         >
           {this._renderModalContent(this.props.setModal)}
         </Modal>
-        <Modal
-          isVisible={this.props.visibleModalv === 2}
-          backdropColor={'white'}
-          backdropOpacity={0.8}
-          animationIn={'bounceInUp'}
-          animationOut={'zoomOutUp'}
-          animationInTiming={1000}
-          animationOutTiming={1000}
-          backdropTransitionInTiming={1000}
-          backdropTransitionOutTiming={1000}
-        >
-          {this._renderModalContent()}
-        </Modal>
       </View>
     );
   }

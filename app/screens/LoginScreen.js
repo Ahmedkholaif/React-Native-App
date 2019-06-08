@@ -53,7 +53,6 @@ export default class LoginScreen extends Component {
           console.log(biometryType);
           this.setModal('fingerprint')})
         .catch(error => {
-          // alert(error)
         });
     }
     if(Platform.OS === 'ios'){

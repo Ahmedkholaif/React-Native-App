@@ -42,7 +42,7 @@ export default class Example extends Component {
             <Text style={styles.continue_button_Text}>Yes, Sure</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => this.props.setModal( 'fingerprint')}
+          onPress={() => this.props.setModal( null )}
           style={[styles.button,styles.skip_button]} >
         <Text style={styles.skip_button_Text}>
             No thanks,
@@ -65,19 +65,6 @@ export default class Example extends Component {
           backdropTransitionOutTiming={2000}
           backdropOpacity={.2}
           coverScreen={true}
-        >
-          {this._renderModalContent()}
-        </Modal>
-        <Modal
-          isVisible={this.state.visibleModal === 4}
-          backdropColor={'white'}
-          backdropOpacity={0.8}
-          animationIn={'bounceInUp'}
-          animationOut={'zoomOutUp'}
-          animationInTiming={1000}
-          animationOutTiming={1000}
-          backdropTransitionInTiming={1000}
-          backdropTransitionOutTiming={1000}
         >
           {this._renderModalContent()}
         </Modal>
