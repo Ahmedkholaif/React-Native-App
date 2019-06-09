@@ -8,9 +8,10 @@ import {
   TouchableOpacity
 } from "react-native";
 import EStyleSheet from "react-native-extended-stylesheet";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import MapboxGL from "@mapbox/react-native-mapbox-gl";
+import Geolocation from 'react-native-geolocation-service';
+
 import keys from "../config/keys";
 MapboxGL.setAccessToken(keys.mapboxToken);
 
@@ -42,27 +43,25 @@ export default class ExploreScreen extends Component {
   };
   async componentDidMount() {
     await requestLocationPermission();
-    this.watchId = navigator.geolocation.watchPosition(
+    this.watchId = Geolocation.watchPosition(
       position => {
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           error: null
         });
-        console.log(this.state);
+        // console.log(this.state);
       },
       error => this.setState({ error: error.message }),
-      {
-        enableHighAccuracy: true,
-        timeout: 20000,
-        maximumAge: 1000,
-        distanceFilter: 10
-      }
+      { enableHighAccuracy: true, distanceFilter: 0, interval: 5000, fastestInterval: 2000 }
     );
   }
 
   componentWillUnmount() {
-    navigator.geolocation.clearWatch(this.watchId);
+    if(this.watchId!=null){
+      Geolocation.clearWatch(this.watchId);
+
+    }
   }
 
   renderAnnotation(counter) {
